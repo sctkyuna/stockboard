@@ -17,8 +17,11 @@ $(document).ready(function() {
         var stockID = $('input[name=stockID]').val();
         stockValue = getStock(stockID);
         if (stockValue) {
-        	var stockhtml = _.template("<div class=stock id=chart_<%sid%>><h3><%sid%></h3><p><%value%></p></div>", )
-            $("body").append("<div class='stock' id=chart_" + stockID + "><h3>" + stockID + "</h3><p>" + stockValue + "</p></div>");
+        	var stockhtml = _.template("<div class=stock id=chart_<%=stockID%>>
+        									<h3><%=stockID%></h3>
+        									<p><%=stockValue%></p>
+        								</div>")
+            $("body").append(stockhtml);
             $("#chart_" + stockID).draggable();
         }
         else {
